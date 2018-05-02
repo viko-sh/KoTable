@@ -1,0 +1,81 @@
+<tr data-bind="click: $parent.rowClick.bind($parent, $data), css: { 'row-selected': $data == $parent.selectedRow() }">
+    <td class="text-center table-numbers" data-bind="visible: $parent.headColumns()[0].visible(), css: { 'highlight' : $parent.headColumns()[0].highlight } ">
+        <label class="switch" data-bind="stopBubble: true">
+            <input type="checkbox" data-bind="checked: $index() == 2 " />
+            <div class="slider round"></div>
+        </label>
+    </td>
+    <!-- /status -->
+    <!-- Campaign Name -->
+    <td class="text-left" data-bind="text: ad_campaign_name, visible: $parent.headColumns()[1].visible"></td>
+    <!-- /Campaign Name -->
+    <!-- Delivery -->
+    <td class="text-center" data-bind="text: delivery, visible: $parent.headColumns()[2].visible">Delivery</td>
+    <!-- /Delivery -->
+    <!-- Result -->
+    <td class="text-center table-numbers" data-bind="text: ad_post_engagement, visible: $parent.headColumns()[3].visible"></td>
+    <!-- /Result -->
+    <!-- Reach -->
+    <td class="text-center table-numbers" data-bind="text: ad_reach, visible: $parent.headColumns()[4].visible"></td>
+    <!-- /Reach -->
+    <!-- Cost -->
+    <td class="text-center table-numbers" data-bind="text: avg_cost_per_engagement, visible: $parent.headColumns()[5].visible"></td>
+    <!-- /Cost -->
+    <!-- Amount Spent -->
+    <td class="text-center table-numbers" data-bind="text: budget_spent, visible: $parent.headColumns()[6].visible"></td>
+    <!-- /Amount Spent -->
+    <!-- Impressions -->
+    <td class="text-center table-numbers" data-bind="text: ad_impressions, visible: $parent.headColumns()[7].visible"></td>
+    <!-- /Impressions -->
+    <!-- End Date -->
+    <td class="text-left" data-bind="text: end_date, visible: $parent.headColumns()[8].visible"></td>
+    <!-- /End Date  -->
+    <!-- Clicks -->
+    <td class="text-center table-numbers" data-bind="text: ad_clicks_count, visible: $parent.headColumns()[9].visible"></td>
+    <!-- /Clicks -->
+    <!-- Likes -->
+    <td class="text-center table-numbers" data-bind="text: ad_likes_count, visible: $parent.headColumns()[10].visible"></td>
+    <!-- /Likes -->
+    <!-- Comments -->
+    <td class="text-center table-numbers" data-bind="text: ad_comments_count, visible: $parent.headColumns()[11].visible"></td>
+    <!-- /Comments -->
+    <!-- Shares -->
+    <td class="text-center table-numbers" data-bind="text: ad_shares_count, visible: $parent.headColumns()[12].visible"></td>
+    <!-- /Shares -->
+    <!-- Ctr -->
+    <td class="text-center table-numbers" data-bind="text: ad_ctr, visible: $parent.headColumns()[13].visible"></td>
+    <!-- /Ctr -->
+    <!-- Cpm -->
+    <td class="text-center table-numbers" data-bind="text: ad_cpm, visible: $parent.headColumns()[14].visible"></td>
+    <!-- /Cpm -->
+    <!-- Cpc -->
+    <td class="text-center table-numbers" data-bind="text: ad_cpc, visible: $parent.headColumns()[15].visible"></td>
+    <!-- /Cpc -->
+    <!-- People taking action -->
+    <td class="text-center table-numbers" data-bind="text: ad_unique_actions, visible: $parent.headColumns()[16].visible"></td>
+    <!-- /People taking action -->
+    <!-- Post Engagement -->
+    <td class="text-center table-numbers" data-bind="text: ad_post_engagement, visible: $parent.headColumns()[17].visible"></td>
+    <!-- /Post Engagement -->
+</tr>
+
+
+
+
+<!--<tr data-bind="click: $parent.rowClick.bind($parent, $data), css: { 'row-selected': $data == $parent.selectedRow() }">-->
+    <!--<td class="text-center table-numbers" data-bind="visible: $parent.headColumns()[0].visible(), css: { 'highlight' : $parent.headColumns()[0].highlight } ">-->
+        <!--<label class="switch" data-bind="stopBubble: true">-->
+            <!--<input type="checkbox" data-bind="checked: $index() == 2 " />-->
+            <!--<div class="slider round"></div>-->
+        <!--</label>-->
+    <!--</td>-->
+    <!--<td class="text-left" data-bind="text: name, visible: $parent.headColumns()[1].visible, css: { 'highlight' : $parent.headColumns()[1].highlight }">12 Apr 2015</td>-->
+    <!--<td class="text-left" data-bind="text: email, visible: $parent.headColumns()[2].visible, css: { 'highlight' : $parent.headColumns()[2].highlight }">70</td>-->
+    <!--<td class="text-left" data-bind="text: body, visible: $parent.headColumns()[3].visible, css: { 'highlight' : $parent.headColumns()[3].highlight }">10</td>-->
+    <!--<td class="text-center table-numbers" data-bind="text: postId, visible: $parent.headColumns()[4].visible, css: { 'highlight' : $parent.headColumns()[4].highlight }">10</td>-->
+    <!--<td class="text-left" data-bind="text: name, visible: $parent.headColumns()[5].visible">10</td>-->
+    <!--<td class="text-left" data-bind="text: email, visible: $parent.headColumns()[6].visible">10</td>-->
+    <!--<td class="text-left" data-bind="text: name, visible: $parent.headColumns()[7].visible">10</td>-->
+    <!--<td class="text-left" data-bind="text: email, visible: $parent.headColumns()[8].visible">10</td>-->
+    <!--<td class="text-left" data-bind="text: id, visible: $parent.headColumns()[9].visible">10</td>-->
+<!--</tr>-->

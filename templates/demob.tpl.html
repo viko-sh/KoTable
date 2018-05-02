@@ -1,0 +1,19 @@
+<tr data-bind="click: $parent.rowClick.bind($parent, $data), css: { 'row-selected': $data == $parent.selectedRow() }">
+    <td class="text-center table-numbers" data-bind="visible: $parent.headColumns()[0].visible, css: { 'highlight' : $parent.headColumns()[0].highlight } ">
+        <!-- ko if: $parent.headColumns()[0].switch -->
+            <label class="switch" data-bind="click: $parent.headColumns()[0].switch.bind($data, $data), clickBubble: false">
+                <input type="checkbox" data-bind="checked: $index() == 2, enable: $index() !== 4 " />
+                <div class="slider round"></div>
+            </label>
+        <!-- /ko -->
+    </td>
+    <td class="text-left" data-bind="text: name, visible: $parent.headColumns()[1].visible, css: { 'highlight' : $parent.headColumns()[1].highlight }">12 Apr 2015</td>
+    <td class="text-left" data-bind="text: email, visible: $parent.headColumns()[2].visible, css: { 'highlight' : $parent.headColumns()[2].highlight }">70</td>
+    <td class="text-left" data-bind="text: body, visible: $parent.headColumns()[3].visible, css: { 'highlight' : $parent.headColumns()[3].highlight }">10</td>
+    <td class="text-left" data-bind="visible: $parent.headColumns()[4].visible, css: { 'highlight' : $parent.headColumns()[4].highlight }">
+        <!-- ko foreach: $parent.headColumns()[4].actions -->
+        <i data-bind="css: icon + ' icon-font-size-16 margin-left-6 margin-right-6', click: click.bind($parent, $parent)"></i>
+        <!-- /ko -->
+    </td>
+    <td class="text-center table-numbers" data-bind="text: postId, visible: $parent.headColumns()[5].visible, css: { 'highlight' : $parent.headColumns()[5].highlight }">10</td>
+</tr>

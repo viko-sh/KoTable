@@ -1,0 +1,115 @@
+<div class="table-wrapper">
+    <!-- ko isServerPagination() === true -->
+    <div class="table-loader" data-bind="visible: showLoader"></div>
+    <!-- /ko -->
+    <i class="tr-icon-dot-menu column-settings icon-font-size-16 toggleColumnPicker" data-bind="click: toggleColumnPicker"></i>
+    <div class="column-picker" data-bind="visible: columnPickerVisible">
+        <div class="row border-bottom-solid padding-bottom-5">
+            <div class="columns large-10">
+                <i class="icon-font-size-16 absolute top-10 left-10" data-bind="css: { 'tr-icon-select-all' : columnsSelectorState, 'tr-icon-unselected' : !columnsSelectorState() },click: columnsSelectToggle"></i>
+                <i class="icon-font-size-16 tr-icon-search absolute top-10 left-30"></i>
+                <input type="text" placeholder="search" class="small margin-left-30 margin-top-5" data-bind="textInput: searchColumns" />
+            </div>
+            <div class="columns large-1 relative">
+                <i class="tr-icon-close top-right icon-font-size-10 lt-gray-54 top-15 right-10" data-bind="click: closeColumnsMenu"></i>
+            </div>
+        </div>
+        <div class="row">
+            <ul data-bind="foreach: filteredColumns">
+                <li>
+                <span class="tracx-checkbox">
+                    <input type="checkbox" data-bind="attr: {'id':_id}, checked: visible" />
+                    <label data-bind="attr: {'for':_id}">
+                        <span><i class="icon-font-size-12 lt-green-6 tr-icon-check padding-top-0"></i></span>
+                        <!-- ko text: title --> <!-- /ko -->
+                    </label>
+                </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="table-head">
+        <div class="table-head-loader"></div>
+        <table class="table tr-ignore-old-style">
+            <thead>
+                <tr data-bind="foreach: headColumns">
+                    <!-- ko if: $data.visible -->
+                    <th colspan="1" rowspan="1" data-bind="tableColumn: { cb: $component.setTableHeadersWidth.bind($component) }, css: thClassName">
+                        <span>
+                            <!-- ko text:  title --><!-- /ko -->
+                            <!-- ko if: sort -->
+                            <i class="icon-font-size-10 float-right" data-bind="click: $component.sortData.bind($component, $data), attr: { class : sortingIcon }"></i>
+                            <!-- /ko -->
+                        </span>
+                        <!-- ko if: subTitle -->
+                        <br/>
+                        <span class="sub-title" data-bind="text: subTitle"></span>
+                        <!-- /ko -->
+                    </th>
+                    <!-- /ko -->
+                </tr>
+            </thead>
+        </table>
+    </div>
+
+    <div class="table-body" data-bind='template: { afterRender: tableRenderCB.bind($component) }, style: { "max-height": height}'>
+        <table class="table tr-ignore-old-style">
+            <thead>
+                <tr data-bind="foreach: headColumns">
+                    <!-- ko if: $data.visible -->
+                        <th data-bind="style:{ width: width  + 'px', maxWidth: width + 'px', minWidth: width + 'px'}, css: thClassName, attr: {'data-width': width}">
+                            <span>
+                                <!-- ko text:  title --><!-- /ko -->
+                                <!-- ko if: sort-->
+                                <i class="icon-font-size-10 float-right" data-bind="attr: { class : sortingIcon }"></i>
+                                <!-- /ko -->
+                            </span>
+                            <!-- ko if: subTitle -->
+                            <br/>
+                            <span class="sub-title" data-bind="text: subTitle"></span>
+                            <!-- /ko -->
+                        </th>
+                    <!-- /ko -->
+                </tr>
+            </thead>
+            <tbody data-bind="template: {name: rowTemplate, if:records().length, foreach: records, afterRender: afterRender.bind($component, false) }">
+            </tbody>
+            <tbody data-bind="template: {name: 'ko/components/table/nodata', if:!records().length }">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination row margin-top-15 collapse">
+        <!-- ko if: typeof pagination !== "undefined" && records().length -->
+        <div class="columns large-8" data-bind="with: pagination">
+            <label class="float-left margin-top-9 margin-right-12">show:</label>
+            <div class="float-left width-60 margin-right-12 ">
+                <ko.select class="tr-ignore-old-style medium" params="
+                                        options:        recordsPerPageOptions,
+                                        selected:       recordsPerPage,
+                "></ko.select>
+            </div>
+            <span class="float-left margin-top-9 margin-right-20">rows per page</span>
+            <span class="float-left margin-top-9 margin-right-12">Page</span>
+            <input type="text" class="width-50 input-inline-block text-center float-left margin-right-12 margin-top-3 small" data-bind="textInput: currentPage"/>
+            <span class="float-left margin-top-9 margin-right-12">of <span data-bind="text: pagesNum"></span></span>
+            <button class="button btn-secondary btn-small margin-top-3" data-bind="click: prevPage, enable: canGoPrev">
+                <i class="tr-icon-angle-left icon-font-size-10"></i>
+            </button>
+            <button class="button btn-secondary btn-small margin-top-3" data-bind="click: nextPage, enable: canGoNext">
+                <i class="tr-icon-angle-right icon-font-size-10 color-white"></i>
+            </button>
+            <span class="pagination-loader float-left margin-top-10 margin-left-10" data-bind="visible: $parent.isServerPagination && showLoader"></span>
+        </div>
+        <!-- /ko -->
+        <div class="columns large-4 text-right float-right">
+            <button class="button btn-small margin-top-3" data-bind="click: $component.scrollForward.bind($component)">
+                <i class="tr-icon-angle-left icon-font-size-10"></i>
+            </button>
+            <button class="button btn-small margin-top-3" data-bind="click: $component.scrollBack.bind($component)">
+                <i class="tr-icon-angle-right  icon-font-size-10"></i>
+            </button>
+        </div>
+    </div>
+</div>
